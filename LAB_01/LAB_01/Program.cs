@@ -9,7 +9,7 @@ string countInput = Console.ReadLine();
 
 // Validation
 bool result = int.TryParse(countInput, out wordCount);
-do
+while (inputTries > -1)
 {
     if (!result && inputTries > 0)
     {
@@ -29,7 +29,7 @@ do
     {
         inputTries = -1;
     }
-} while (inputTries > -1);
+} 
 
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
@@ -68,7 +68,7 @@ char character = char.ToLower(Console.ReadKey().KeyChar);
 inputTries = 5;
 
 // Validation
-do
+while (inputTries > -1) 
 {
     if (!Char.IsLetter(character) && inputTries > 0)
     {
@@ -88,7 +88,7 @@ do
     {
         inputTries = -1;
     }
-} while (inputTries > -1);
+} 
 
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
