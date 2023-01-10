@@ -107,7 +107,7 @@ foreach(char c in joinedWords)
 double characterPercentage = ((double)occurenceCount / (double)joinedWords.Length) * 100;
 Console.WriteLine();
 Console.WriteLine($"~ '{character}' is seen {occurenceCount} times in the array");
-Console.WriteLine($"~ '{character}' makes up {characterPercentage}% of the array");
+Console.WriteLine($"~ '{character}' makes up {(int)Math.Round(characterPercentage)}% of the array");
 Console.ReadLine();
 
 
