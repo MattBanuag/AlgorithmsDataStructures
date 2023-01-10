@@ -1,6 +1,37 @@
-﻿// How many words - PROMPT
+﻿// Program Setup
+using System.Numerics;
+int wordCount;
+int inputTries = 5;
+
+// How many words - PROMPT
 Console.WriteLine("~ How many words would you like to check?");
-int wordCount = Int32.Parse(Console.ReadLine());
+string countInput = Console.ReadLine();
+
+// Validation
+bool result = int.TryParse(countInput, out wordCount);
+do
+{
+    if (!result && inputTries > 0)
+    {
+        inputTries--;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"ERROR: '{countInput}' is not a number. Please enter a number: ");
+        countInput = Console.ReadLine();
+    }
+    else if (inputTries == 0)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"ERROR: You have reached the maximum amount of tries. Hit <enter> to try again");
+        Console.ReadLine();
+        return;
+    }
+    else
+    {
+        inputTries = -1;
+    }
+} while (inputTries > -1);
+
+Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
 
 // What are the words - PROMPT
@@ -20,14 +51,21 @@ for (int i = 0; i < wordCount; i++)
         Console.ReadLine();
         return;
     }
+    else if (wordsArray[i] == "")
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("ERROR: Words cannot be empty. Hit <enter> to try again.");
+        Console.ReadLine();
+        return;
+    }
 }
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
 
 // Entering a character - PROMPT
-Console.WriteLine("~ Please enter a character:");
-char character = Console.ReadKey().KeyChar;
-int inputTries = 5;
+Console.WriteLine("~ Please enter a character to count its occurence:");
+char character = char.ToLower(Console.ReadKey().KeyChar);
+inputTries = 5;
 
 // Validation
 do
@@ -38,7 +76,7 @@ do
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine();
         Console.WriteLine($"ERROR: '{character}' is not a letter. Please select a letter: ");
-        character = Console.ReadKey().KeyChar;
+        character = char.ToLower(Console.ReadKey().KeyChar);
     }
     else if (inputTries == 0)
     {
@@ -52,9 +90,10 @@ do
     }
 } while (inputTries > -1);
 
-int occurenceCount = 0;
-int totalCharCount = 0;
+Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
+int occurenceCount = 0;
+BigInteger totalCharCount = 0;
 
 for(int i = 0; i < wordsArray.Length; i++)
 {
