@@ -93,22 +93,18 @@ do
 Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
 int occurenceCount = 0;
-BigInteger totalCharCount = 0;
+string joinedWords = String.Join("", wordsArray).ToLower();
 
-for(int i = 0; i < wordsArray.Length; i++)
+foreach(char c in joinedWords)
 {
-    foreach(char c in wordsArray[i])
+    if(c == character)
     {
-        if(c == character)
-        {
-            occurenceCount++;
-        }
-        totalCharCount++;
-    }
+        occurenceCount++;   
+    }  
 }
 
 // Result Summary
-double characterPercentage = ((double)occurenceCount / (double)totalCharCount) * 100;
+double characterPercentage = ((double)occurenceCount / (double)joinedWords.Length) * 100;
 Console.WriteLine();
 Console.WriteLine($"~ '{character}' is seen {occurenceCount} times in the array");
 Console.WriteLine($"~ '{character}' makes up {characterPercentage}% of the array");
