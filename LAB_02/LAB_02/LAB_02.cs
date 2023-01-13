@@ -5,21 +5,38 @@
     For example, the string “Programmatic Python” would result in 
     the array ['p','r','o','a','m','t'].
 */
-/*Console.WriteLine("~ Please enter a word of at LEAST 15 characters: ");
+Console.WriteLine("~ Please enter a word of at LEAST 15 characters: ");
 string userInput = Console.ReadLine();
 string formattedInput = userInput.ToLower();
-char[] charsList = formattedInput.ToCharArray();
-char[] repeatedChars;
+char[] charArray = formattedInput.ToCharArray();
+string repeatingChars = "";
 
-for(int i = 0; i < charsList.Length; i++)
+for (int i = 0; i < charArray.Length; i++)
 {
-    if (charsList.Contains(formattedInput[i]) && formattedInput.Count() )
+    int indexOfFirst = Array.IndexOf(charArray, charArray[i]);
+    int indexOfSecond = Array.LastIndexOf(charArray, charArray[i]);
+
+    if(indexOfFirst != indexOfSecond)
     {
-        Console.WriteLine(formattedInput[i]);
-
+        repeatingChars += charArray[i];
     }
-}*/
+}
 
+string finalResult = "";
+foreach (char c in repeatingChars)
+{
+    if (finalResult.IndexOf(c) == -1)
+    {
+        finalResult += c;
+    }
+}
+char[] resultRepeatedChars = finalResult.ToCharArray();
+foreach (char c in resultRepeatedChars)
+{
+    Console.Write($"[{c}] ");
+}
+
+Console.WriteLine();
 /*
     A program returns an array of strings that are 
     unique words found in the argument.
@@ -85,7 +102,7 @@ Console.WriteLine();*/
     would print "through" If there are multiple words tied 
     for greatest length, print the last one
 */
-Console.WriteLine("~ Longest unbroken word");
+/*Console.WriteLine("~ Longest unbroken word");
 Console.WriteLine("~ Please enter a sentence: ");
 string userInputString4 = Console.ReadLine();
 userInputString4.ToLower();
@@ -102,4 +119,4 @@ for(int i = 0; i < wordsArray.Length; i++)
     }
 }
 
-Console.WriteLine(longestWord);
+Console.WriteLine(longestWord);*/
