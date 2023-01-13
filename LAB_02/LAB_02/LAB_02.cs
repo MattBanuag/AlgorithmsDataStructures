@@ -23,7 +23,9 @@ for(int i = 0; i < charsList.Length; i++)
 /*
     A program that reverses a provided string  
 */
-Console.WriteLine("~ Reversing String");
+using System.Diagnostics.Tracing;
+
+Console.WriteLine("~ Reversing string");
 Console.WriteLine("~ Please enter a word: ");
 string reversedWord = "";
 string userInputString3 = Console.ReadLine();
@@ -35,4 +37,31 @@ for(int i = charsList3.Length - 1; i >= 0; i--)
 }
 
 Console.WriteLine(reversedWord);
+Console.WriteLine();
 
+/*
+    A program that finds the longest unbroken word 
+    in a string and prints it
+
+    For example, the string "Tiptoe through the tulips" 
+    would print "through" If there are multiple words tied 
+    for greatest length, print the last one
+*/
+Console.WriteLine("~ Longest unbroken word");
+Console.WriteLine("~ Please enter a sentence: ");
+string userInputString4 = Console.ReadLine();
+userInputString4.ToLower();
+string[] wordsArray = userInputString4.Split(" ");
+
+string currentWord = "";
+int currentLength = 0;
+foreach(string word in wordsArray)
+{
+    if(word.Length > currentLength)
+    {
+        currentWord = word;
+        currentLength = word.Length;
+    }    
+}
+
+Console.WriteLine(currentWord);
