@@ -21,11 +21,49 @@ for(int i = 0; i < charsList.Length; i++)
 }*/
 
 /*
+    A program returns an array of strings that are 
+    unique words found in the argument.
+
+    For example, the string “To be or not to be” 
+    returns ["to","be","or","not"].
+*//*
+Console.WriteLine("~ Getting unique words from a string: ");
+Console.WriteLine("~ Please enter a sentence with some repeated words: ");
+string userInputString2 = Console.ReadLine();
+string formattedString = userInputString2.ToLower();
+string[] testStrings = formattedString.Split(" ");
+string uniqueStrings = "";
+
+for(int i = 0; i < testStrings.Length; i++)
+{
+    int indexOfFirst = Array.IndexOf(testStrings, testStrings[i]);
+    int indexOfSecond = Array.LastIndexOf(testStrings, testStrings[i]);
+
+    // Repeeating Strings
+    if (indexOfFirst != indexOfSecond)
+    {
+        testStrings[indexOfSecond].Remove(0, testStrings[indexOfSecond].Length);
+        uniqueStrings += testStrings[i];
+    } else
+    {
+        // Unique Strings
+        uniqueStrings += testStrings[i];
+    }
+}
+
+string[] uniqueStringsArray = uniqueStrings.Split(" "); 
+
+foreach(string str in uniqueStringsArray)
+{
+    Console.WriteLine("~ " + str);
+}
+
+Console.WriteLine();
+
+*//*
     A program that reverses a provided string  
 */
-using System.Diagnostics.Tracing;
-
-Console.WriteLine("~ Reversing string");
+/*Console.WriteLine("~ Reversing string");
 Console.WriteLine("~ Please enter a word: ");
 string reversedWord = "";
 string userInputString3 = Console.ReadLine();
@@ -37,7 +75,7 @@ for(int i = charsList3.Length - 1; i >= 0; i--)
 }
 
 Console.WriteLine(reversedWord);
-Console.WriteLine();
+Console.WriteLine();*/
 
 /*
     A program that finds the longest unbroken word 
@@ -53,15 +91,15 @@ string userInputString4 = Console.ReadLine();
 userInputString4.ToLower();
 string[] wordsArray = userInputString4.Split(" ");
 
-string currentWord = "";
-int currentLength = 0;
-foreach(string word in wordsArray)
+string longestWord = "";
+int nextIndex = 1;
+
+for(int i = 0; i < wordsArray.Length; i++)
 {
-    if(word.Length > currentLength)
+    if (wordsArray[i].Length >= wordsArray[nextIndex].Length)
     {
-        currentWord = word;
-        currentLength = word.Length;
-    }    
+        longestWord = wordsArray[i];
+    }
 }
 
-Console.WriteLine(currentWord);
+Console.WriteLine(longestWord);
