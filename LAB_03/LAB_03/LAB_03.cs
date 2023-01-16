@@ -48,8 +48,8 @@ Console.WriteLine();
              returns {1, 2, 2, 3, 4, 5, 5, 7, 9, 13}
 */
 /*
-    I believe that this program will run on O3(n) time.
-    We have two iterations that are NOT nested.
+    I believe that this program will run on O2(n ^ 2) time.
+    We have two iterations and one of them is nested.
 */
 Console.WriteLine();
 Console.WriteLine("~ Program 2");
@@ -59,18 +59,39 @@ int[,] multiArray = new int[,]
     { 2, 5, 7, 9, 13},
 };
 int[] mergedArray = new int[multiArray.GetLength(1) * 2];
-int j = 5;
+int nextIndex = 5;
+int currentNum = 0;
 
 for(int i = 0; i < 5; i++)
 {
     mergedArray[i] = multiArray[0, i];
-    mergedArray[j] = multiArray[1, i];
-    j++;
+    mergedArray[nextIndex] = multiArray[1, i];
+    nextIndex++;
 }
 
-Array.Sort(mergedArray);
-string sortedNumbers = String.Join(", ", mergedArray);
-Console.WriteLine(sortedNumbers);
+for(int i = 0; i < mergedArray.Length; i++)
+{
+    for(int j = i + 1; j < mergedArray.Length; j++)
+    {
+        if (mergedArray[i] > mergedArray[j])
+        {
+            currentNum = mergedArray[i];
+            mergedArray[i] = mergedArray[j];
+            mergedArray[j] = currentNum;
+        }
+    }
+    
+
+    Console.Write(mergedArray[i] + " ");
+}
+
+// Using the Sort() method below, cuts down our iterations.
+/*
+    Array.Sort(mergedArray);
+    string sortedNumbers = String.Join(", ", mergedArray);
+    Console.WriteLine(sortedNumbers);
+*/
+Console.WriteLine();
 
 /*
     Given an integer, reverse the digits of that integer, e. g. 
@@ -81,6 +102,11 @@ Console.WriteLine(sortedNumbers);
 /*
     Since we are only iterating once, I belive 
     the complexity of this program is O(n)
+*/
+
+/*
+    Solution inspiration from:
+    https://www.javatpoint.com/csharp-program-to-reverse-number
 */
 Console.WriteLine();
 Console.WriteLine("~ Program 3");
