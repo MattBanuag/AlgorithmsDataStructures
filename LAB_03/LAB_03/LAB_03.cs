@@ -9,6 +9,9 @@
     I believe that this program will run on O(n) time.
     There is only one loop iterating through the array.
 */
+using System.Runtime.Intrinsics.Arm;
+using System.Transactions;
+
 Console.WriteLine("~ Program 1");
 int[] numberList = { 1, 2, 3, 4, 7, 9, 2, 4 };
 int[] repeatingNumbers = new int[numberList.Length];
@@ -74,10 +77,24 @@ Console.WriteLine(sortedNumbers);
     input is 3415, output is 5143. What is the time complexity of 
     your solution? 
 */
+
+/*
+    Since we are only iterating once, I belive 
+    the complexity of this program is O(n)
+*/
 Console.WriteLine();
 Console.WriteLine("~ Program 3");
 
-/*Console.WriteLine("~ Please enter a number of AT LEAST 4 digits: ");
+Console.WriteLine("~ Please enter a number of AT LEAST 4 digits: ");
 int userInt = Int32.Parse(Console.ReadLine());
+int remainder = 0;
+int reverse = 0;
 
-while()*/
+while(userInt > 0)
+{
+    remainder = userInt % 10;
+    reverse = reverse * 10 + remainder;
+    userInt /= 10;
+}
+
+Console.WriteLine($"Reversed output: {reverse}");
