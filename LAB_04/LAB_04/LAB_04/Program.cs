@@ -44,3 +44,30 @@ foreach (int number in numberList[2])
 int thirdListMax = numberList[2].Max();
 Console.WriteLine();
 Console.WriteLine($"List 3 Max Value: {thirdListMax}");
+
+/*
+    String HighestGrade(List<List<int>>) accepts a list of number 
+    grades among students in different courses (where each list 
+    represents a single course), between 0 and 100. It returns the highest 
+    grade among all students in all courses.
+
+    For example: { {85,92, 67, 94, 94}, {50, 60, 57, 95}, {95} } returns 
+    "The highest grade is 95. This grade was found in class(es) {index}".
+*/
+Console.WriteLine();
+Console.WriteLine("~ Program 2");
+List<List<int>> grades = new List<List<int>>();
+grades.Add(new List<int>() { 85, 92, 67, 94, 94 });
+grades.Add(new List<int>() { 50, 60, 57, 95 });
+int firstMaxGrade = grades[0].Max();
+int secondMaxGrade = grades[1].Max();
+
+if (firstListMax > secondListMax)
+{
+    Console.WriteLine($"The highest grade is {firstMaxGrade}. This grade was found in Class 0");
+}
+
+if (firstListMax < secondListMax)
+{
+    Console.WriteLine($"The highest grade is {secondMaxGrade}. This grade was found in Class 1");
+}
