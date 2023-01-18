@@ -116,8 +116,4 @@ for (int j = 0; j <= myNumbers.Count() - 2; j++)
     }
 }
 
-Console.WriteLine("Output: ");
-foreach (int num in myNumbers)
-{
-    Console.Write(num + " ");
-}
+Console.WriteLine($"Sorted List: {String.Join(", ", myNumbers)}");
