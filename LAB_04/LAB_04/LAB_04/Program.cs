@@ -71,3 +71,35 @@ if (firstListMax < secondListMax)
 {
     Console.WriteLine($"The highest grade is {secondMaxGrade}. This grade was found in Class 1");
 }
+
+/*
+    List<int> OrderByLooping (List<int>) orders a list of integers, 
+    from least to greatest, using only basic control statements 
+    (ie. if/else, for/while).
+
+    For example, argument {6, -2, 5, 3} returns {-2, 3, 5, 6}. 
+*/
+Console.WriteLine();
+Console.WriteLine("~ Program 3");
+List<int> myNumbers = new List<int>();
+myNumbers.AddRange(new List<int>() { 6, -2, 5, 3 });
+
+int temp;
+for (int j = 0; j <= myNumbers.Count() - 2; j++)
+{
+    for (int i = 0; i <= myNumbers.Count() - 2; i++)
+    {
+        if (myNumbers[i] > myNumbers[i + 1])
+        {
+            temp = myNumbers[i + 1];
+            myNumbers[i + 1] = myNumbers[i];
+            myNumbers[i] = temp;
+        }
+    }
+}
+
+Console.WriteLine("Output: ");
+foreach (int num in myNumbers)
+{
+    Console.Write(num + " ");
+}
