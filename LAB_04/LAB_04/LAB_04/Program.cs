@@ -7,6 +7,10 @@
     Output the results with a message like: “List 1 has a maximum of 5. 
     List 2 has a maximum of 9. List 3 has a maximum of 2.”
 */
+/*
+    I beleive this solution to be O(n) since I are only 
+    visiting the list once but with three iterations.
+*/
 Console.WriteLine("~ Program 1");
 List<List<int>> numberList = new List<List<int>>();
 numberList.Add(new List<int>() { 1, 5, 3 });
@@ -54,6 +58,12 @@ Console.WriteLine($"List 3 Max Value: {thirdListMax}");
     For example: { {85,92, 67, 94, 94}, {50, 60, 57, 95}, {95} } returns 
     "The highest grade is 95. This grade was found in class(es) {index}".
 */
+/*
+    I beleive this solution to be O(n) since I am only 
+    iterating through every list once. This is because I am
+    using the 'Max()' method in both lists. Which means I am likely
+    iterating through these lists.
+*/
 Console.WriteLine();
 Console.WriteLine("~ Program 2");
 List<List<int>> grades = new List<List<int>>();
@@ -64,12 +74,12 @@ int secondMaxGrade = grades[1].Max();
 
 if (firstListMax > secondListMax)
 {
-    Console.WriteLine($"The highest grade is {firstMaxGrade}. This grade was found in Class 0");
+    Console.WriteLine($"The highest grade is {firstMaxGrade}. This grade was found in Class 1");
 }
 
 if (firstListMax < secondListMax)
 {
-    Console.WriteLine($"The highest grade is {secondMaxGrade}. This grade was found in Class 1");
+    Console.WriteLine($"The highest grade is {secondMaxGrade}. This grade was found in Class 2");
 }
 
 /*
@@ -79,21 +89,29 @@ if (firstListMax < secondListMax)
 
     For example, argument {6, -2, 5, 3} returns {-2, 3, 5, 6}. 
 */
+/*
+    I believe this solution to be O(n ^ 2). I have two initial iterations,
+    but one of those iterations contains a nested loop!
+
+    I take no credit of the solution below.
+    All credit is due to Karthikeya Boyini.
+    https://www.tutorialspoint.com/Bubble-Sort-program-in-Chash
+*/
 Console.WriteLine();
 Console.WriteLine("~ Program 3");
 List<int> myNumbers = new List<int>();
 myNumbers.AddRange(new List<int>() { 6, -2, 5, 3 });
 
-int temp;
+int current;
 for (int j = 0; j <= myNumbers.Count() - 2; j++)
 {
     for (int i = 0; i <= myNumbers.Count() - 2; i++)
     {
         if (myNumbers[i] > myNumbers[i + 1])
         {
-            temp = myNumbers[i + 1];
+            current = myNumbers[i + 1];
             myNumbers[i + 1] = myNumbers[i];
-            myNumbers[i] = temp;
+            myNumbers[i] = current;
         }
     }
 }
