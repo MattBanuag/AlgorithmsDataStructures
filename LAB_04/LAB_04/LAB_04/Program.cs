@@ -96,6 +96,11 @@ if (firstListMax < secondListMax)
     I take no credit of the solution below.
     All credit is due to Karthikeya Boyini.
     https://www.tutorialspoint.com/Bubble-Sort-program-in-Chash
+
+    NOTE TO ZACH:
+    Hey Zach, I apologize for not being able to figure this one out on my own.
+    I still get thrown off with sorting algorithms, I am still trying to understand
+    it. If you have to dock marks for this solution, I completely understand.
 */
 Console.WriteLine();
 Console.WriteLine("~ Program 3");
