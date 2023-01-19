@@ -33,7 +33,7 @@ while (isRunning)
         while (isAdding)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Song name: ");
+            Console.Write("~ Song name: ");
             Console.ResetColor();
             string songName = Console.ReadLine().ToUpper();
 
@@ -69,7 +69,39 @@ while (isRunning)
         
     } else if(choice == "2")
     {
+        bool isPlaying = true;
+        if (Playlist.Count == 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("~ ERROR: There are no songs in your playlist\n");
+            Console.ResetColor();
+        } else
+        {
+            // Display Songs
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"~ {Playlist.Count} songs in playlist: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"~ [{String.Join(", ", Playlist)}]");
+            while (isPlaying)
+            {
+                Console.Write("~ PLAY: ");
+                Console.ResetColor();
+                string songChoice = Console.ReadLine().ToUpper();
 
+                if(Playlist.Contains(songChoice))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"~ Now Playing, {songChoice}\n");
+                    Console.ResetColor();
+                    isPlaying = false;
+                } else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("~ ERROR: This song is not in your playlist\n");
+                    Console.ResetColor();
+                }
+            }
+        }   
     } else if(choice == "3")
     {
 
@@ -79,7 +111,7 @@ while (isRunning)
     } else
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("This command does not exist");
+        Console.WriteLine("~ ERROR: This command does not exist");
         Console.ResetColor();
         continue;
     }
