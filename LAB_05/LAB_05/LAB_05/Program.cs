@@ -1,13 +1,10 @@
 ﻿/*
-    Using Stacks and Queues where appropriate, create a simple 
-    command line playlist app that allows a user to add a song to a playlist. 
-    Provide commands to play the next song, skip the next song, or add a new 
-    song to the playlist. Users should be able to rewind by one song many times 
-    to play a previous track. 
+    I believe the time complexity for this program is O(n).
+    Instead of using a 'Foreach' to display the items in the queue, I used
+    string
 */
-using System.Runtime.Serialization.Json;
-
 bool isRunning = true;
+string songChoice;
 Queue<string> Playlist = new Queue<string>();
 
 while (isRunning)
@@ -86,7 +83,7 @@ while (isRunning)
             {
                 Console.Write("~ PLAY: ");
                 Console.ResetColor();
-                string songChoice = Console.ReadLine().ToUpper();
+                songChoice = Console.ReadLine().ToUpper();
 
                 if(Playlist.Contains(songChoice))
                 {
@@ -104,10 +101,20 @@ while (isRunning)
         }   
     } else if(choice == "3")
     {
-
+        if(Playlist.Count == 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("~ ERROR: No song is currently playing");
+            Console.WriteLine("~ ERROR: Please play a song first");
+            Console.ResetColor();
+        } else
+        {
+            // 
+            Console.WriteLine(Playlist.Peek());
+        }
     } else if(choice == "4")
     {
-
+        break;
     } else
     {
         Console.ForegroundColor = ConsoleColor.Red;
