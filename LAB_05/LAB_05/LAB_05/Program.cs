@@ -3,8 +3,10 @@
     Instead of using a 'Foreach' to display the items in the queue, I used
     'String.Join'.
 */
+using System.Linq;
+
 bool isRunning = true;
-string songChoice;
+string songChoice = "";
 Queue<string> Playlist = new Queue<string>();
 
 while (isRunning)
@@ -109,10 +111,10 @@ while (isRunning)
             Console.ResetColor();
         } else
         {
-            /*
-                Was not able to complete the 'Skip' and 'Rewind'
-                functionality.
-            */
+            // Error in the syntax but this was my unifinished solution 
+            // for LAB 5
+            /*string position = Playlist.Count(songChoice);
+            Console.WriteLine(Playlist.Skip());*/
         }
     } else if(choice == "4")
     {
