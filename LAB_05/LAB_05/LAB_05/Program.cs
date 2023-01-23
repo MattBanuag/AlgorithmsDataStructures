@@ -1,7 +1,7 @@
 ﻿/*
     I believe the time complexity for this program is O(n).
     Instead of using a 'Foreach' to display the items in the queue, I used
-    string
+    'String.Join'.
 */
 bool isRunning = true;
 string songChoice;
@@ -109,8 +109,10 @@ while (isRunning)
             Console.ResetColor();
         } else
         {
-            // 
-            Console.WriteLine(Playlist.Peek());
+            /*
+                Was not able to complete the 'Skip' and 'Rewind'
+                functionality.
+            */
         }
     } else if(choice == "4")
     {
